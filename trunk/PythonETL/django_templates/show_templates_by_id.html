@@ -1,0 +1,82 @@
+
+{% extends "main_template.html" %}
+
+
+
+{% block header %}
+						<div class="main_title"> <h2>{{ object_Name }}  <span class="font_lighter">{{ the_template.name }}</span></h2> </div>
+
+										
+					<div class="button_box">							
+						<div class="btn-group ">
+						    <a class="btn btn-primary " href="#"></i> Action</a>
+						    <a class="btn btn-primary dropdown-toggle " data-toggle="dropdown"><span class="caret"></span></a>
+						    <ul class="dropdown-menu">
+						    <li><a href="/templates/edit/{{ the_template.id }}/"><i class="icon-pencil"></i> Edit</a></li>
+
+						    <li><a data-toggle="modal" data-target="#myModal" href="#" ><i class="icon-trash"></i> Delete</a></li>
+							</ul>	    
+			
+
+				<!-- Modal delete object button-->
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">Confirm</h3>
+						</div>
+						<div class="modal-body">
+							<p>You are about to delete {{ object_Name }} {{ the_template.name }}</p>
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel Action!</button>
+							<button class="btn btn-danger" onclick="javascript:window.location.href='/templates/delete/{{ the_template.id}}/'">Delete {{ object_Name }}</button>
+						</div>
+				</div>											    					    
+			</div>
+		</div>					
+{% endblock %}	
+
+
+{% block body_attributes %}
+ 	onload="prettyPrint()"
+{% endblock body_attributes %}
+
+				
+{% block breadcrum %}
+					    <li><a href="/index">Home</a> 									  <span class="divider">/</span></li>
+						<li><a href="/templates/show/all">{{ object_Name }}s</a> <span class="divider">/</span></li>
+					    <li class="active">{{ object_Name }} {{ the_template.name }}</li>					    
+{% endblock %}				
+				
+											
+{% block content %}				
+				<div class="body_container">					
+						<div>	
+							<pre class="pre-scrollable prettyprint linenums" >
+							{{ the_template.content }}
+							</pre>
+											
+						</div>														
+				</div>
+				
+								
+				<!-- Modal delete object button-->
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">Confirm</h3>
+						</div>
+						<div class="modal-body ">
+							<p>You are about to delete the {{ object_Name }} {{ the_template.name }}?</p>
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel Action!</button>
+							<button class="btn btn-danger">Delete {{ object_Name }}</button>
+						</div>
+				</div>
+{% endblock %}				
+		
+
+
+
+

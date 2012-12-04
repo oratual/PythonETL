@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+      <html lang="es">
+      <head>
+              <meta charset="utf-8">
+              <title>Edit Template</title>
+      </head>
+      <body>
+      
+
+ 
+      Edit content of templates:<br>
+      		
+{%comment%}
+      		{% for o in some_list %}
+    			<tr class="{% cycle id content %}">
+       			 ...
+    			</tr>
+			{% endfor %}
+      		
+{%endcomment%}
+{%comment%}
+			<form method="post" action="">
+				{% for o in formset %}
+	    			{{o.content}}
+				{% endfor %}
+			<input type="submit" value="save" />{% csrf_token %}
+			</form>
+{%endcomment%}     
+      		
+{%comment%}       		
+			<ul>
+			<form method="post" action="">
+			{% for o in form %}
+			    <li>{{ o.as_table }}</li>
+			{% endfor %}
+			</ul>
+			 <input type="submit" value="save" />{% csrf_token %}
+			</form>
+{%endcomment%} 			
+
+			
+			<form method="post" action="">
+			    {{ formset.management_form }}
+			    <table>
+			        {% for form in formset %}
+			        {{ form }}
+			        {% endfor %}
+			    </table>
+			    	<input type="submit" value="save" />{% csrf_token %}
+			</form>
+{%comment%} 		
+			form
+			<form method="post" action="">
+			    {{ formset }}
+			    <input type="submit" value="save" />{% csrf_token %}
+			</form>
+{%endcomment%} 
+
+			<script>
+    		document.write('<a href="' + document.referrer + '">Go Back to Index</a>');
+			</script>
+	  <body>
+</html>	

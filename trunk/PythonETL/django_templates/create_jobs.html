@@ -1,0 +1,152 @@
+{% extends "main_template.html" %}
+
+{% block header %}
+<div class="main_title">
+	<h2>Create {{ object_Name }} <span style="font-weight:lighter;">{{ the_job.name }}</span></h2>
+</div>
+
+<div class="button_box">
+	<p>
+		<button class="btn" onclick="javascript:window.location.href='/jobs/show/all/'" type="button">
+			Cancel
+		</button>
+	</p>
+	<p>
+		<button class="btn btn-primary" onclick="create_job_submit()" type="button">
+			Save {{ object_Name }}
+		</button>
+	</p>
+</div>
+
+<script>
+	function create_job_submit() {
+		var a = document.getElementById("create_job");
+		a.submit();
+	}
+</script>
+{% endblock %}
+
+{% block body_attributes %}
+class="create_job"
+{% endblock body_attributes %}
+
+{% block breadcrum %}
+<li>
+	<a href="/index">Home</a><span class="divider">/</span>
+</li>
+<li>
+	<a href="/jobs/show/all">{{ object_Name }}s</a><span class="divider">/</span>
+</li>
+<li class="active">
+	Create {{ object_Name }}
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="body_container">
+	<form id="create_job" method="post" action="" enctype="multipart/form-data">
+
+		{% comment %}
+		<div class="control-group">
+			<label class="control-label" for="description">Source:</label>
+			<div class="controls ">
+				<input type="file" id="file">
+			</div>
+		</div>
+		{% endcomment %}
+
+		<!-- Form -->
+
+		<!-- upload button -->
+		<div class="row">
+			<div class="span2">
+
+				<p>
+					{{ form.non_field_errors }}
+				</p>
+				<p class="label_first_element_left">
+					{{ form.source.label_tag }}
+			</div>
+			<div class="span2">
+				{{ form.source.help_text }}</p>
+				<p>
+					{{ form.source.errors }}
+					{{ form.source }}
+				</p>
+			</div>
+		</div>
+
+		<!-- Template -->
+		<div class="row">
+			<div class="span2">
+				<label for="id_template" class="label_first_element_left" >Template:</label>
+			</div>
+			<div class="span2">
+				{{form.template}}
+			</div>
+		</div>
+
+		<!-- Status -->
+		<div class="row">
+			<div class="span2">
+				<span class="label_first_element_left">Status:</span>
+			</div>
+			<div class="span2">
+				{{ form.status }}
+			</div>
+		</div>
+
+		<!-- periodicity -->
+		<div class="row">
+			<div class="element_left span2">
+				Periodicity:
+			</div>
+			<div class="element_left span2">
+				{{ form.periodicity }}
+			</div>
+		</div>
+<br />
+		<!-- 3 rows: -->
+		<div class="row">
+			<!-- Day of the week -->
+			<div class="span2">
+				<p>
+					<label for="id_dow">Day of the week:</label>
+					<select id="dow" name="dow" style="width: 100px">
+						<option selected="selected" value="">---------</option>
+						<option value="1">Monday</option>
+						<option value="2">Tuesday</option>
+						<option value="3">Wednesday</option>
+						<option value="4">Thursday</option>
+						<option value="5">Friday</option>
+						<option value="6">Saturday</option>
+						<option value="7">Sunday</option>
+					</select>
+				</p>
+			</div>
+
+			<!-- Day of the week -->
+			<div class="span2">
+				<label for="id_dom">Day of the month:</label>
+				<select id="id_dom" name="dom" style="width: 100px">
+					<option selected="selected" value="">---------</option>
+					{% for day in days_in_month %}
+					<option value="{{ day }}">{{ day }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<!-- Hour -->
+			<div class="span2">
+				<label for="id_hour">Hour:</label>
+				<input id="id_hour" type="text" name="hour" style="width: 50px">
+			</div>
+		</div>
+		<!-- /3 rows: -->
+		{% csrf_token %}
+	</form>
+
+</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,155 @@
+{% extends "main_template.html" %}
+
+
+
+{% block header %}
+						<div class="main_title"> <h2>Edit {{ object_Name }} ID:    <span style="font-weight:lighter;">{{ the_job.id }}</span></h2> </div>
+	
+						<div class="button_box">
+							<p><button class="btn" onclick="javascript:window.location.href='/jobs/show/{{ the_job.id }}/'" type="button">Cancel</button></p>
+							<p><button class="btn btn-primary" onclick="edit_job_submit()" type="button">Save {{ object_Name }}</button></p>
+						</div>	
+						
+						<script>
+							function edit_job_submit(){							
+								var a = document.getElementById("edit_job");
+								a.submit();
+							}	
+						</script>
+			
+					
+{% endblock %}	
+
+
+{% block body_attributes %}
+		class="edit_job" 	
+{% endblock body_attributes %}
+
+				
+{% block breadcrum %}
+					    <li><a href="/index">Home</a> 									  <span class="divider">/</span></li>
+						<li><a href="/jobs/show/all">{{ object_Name }}s</a> <span class="divider">/</span></li>
+					    <li><a href="/jobs/show/{{ the_job.id }}/">{{ object_Name }} {{ the_job.source|truncatechars:15 }}</a> <span class="divider">/</span></li>
+					    <li class="active">Edit {{ object_Name }} {{ the_job.name }}</li>	    
+{% endblock breadcrum %}				
+				
+				
+				
+				
+{% block content %}				
+				<div class="body_container">				
+	
+
+						<form id="edit_job" method="post" action="">							
+							
+			<!-- Form -->
+
+		<!-- upload button -->
+		<div class="row">
+			<div class="span2">
+
+
+					{{ form.non_field_errors }}
+
+				<p class="label_first_element_left">
+					{{ form.source.label_tag }}
+			</div>
+			<div class="span5">
+				{{ form.source.help_text }}</p>
+			
+					{{ form.source.errors }}
+					{{ form.source }}
+			
+			</div>
+		</div>
+<br />
+		<!-- Template -->
+		<div class="row">
+			<div class="span2">
+				<label for="id_template" class="label_first_element_left" >Template:</label>
+			</div>
+			<div class="span2">
+				{{form.template}}
+			</div>
+		</div>
+
+		<!-- Status -->
+		<div class="row">
+			<div class="span2">
+				<span class="label_first_element_left">Status:</span>
+			</div>
+			<div class="span2">
+				{{ form.status }}
+			</div>
+		</div>
+
+		<!-- periodicity -->
+		<div class="row">
+			<div class="label_first_element_left span2">
+				Periodicity:
+			</div>
+			<div class="element_left span2">
+				{{ form.periodicity }}
+			</div>
+		</div>
+<br />
+		<!-- 3 rows: -->
+		<div class="row">
+			
+			<div class="span2">
+				DoM / DoW / Hour:
+							</div>
+
+			<!-- Day of the week -->
+			<div class="span1">
+
+				<select id="id_dom" name="dom" style="width: 50px">
+					<option selected="selected" value="{{ the_job.dow }}">{{ the_job.dow }}</option>
+					{% for day in days_in_month %}
+					<option value="{{ day }}">{{ day }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+
+			<!-- Day of the week -->
+			<div class="span2" style="padding-left: 5px">
+
+				<p>
+					<select id="id_dow" name="dow" style="width: 100px">
+						<option selected="selected" value="{{ the_job.dow }}">{{ the_job.dow }}</option>
+						<option value="1">Monday</option>
+						<option value="2">Tuesday</option>
+						<option value="3">Wednesday</option>
+						<option value="4">Thursday</option>
+						<option value="5">Friday</option>
+						<option value="6">Saturday</option>
+						<option value="7">Sunday</option>
+					</select>
+				</p>
+			</div>
+
+
+			<!-- Hour -->
+			<div style="float: left">
+
+				<div style="width: 100px">{{ form.hour }}</div>
+			</div>
+		</div>
+		<!-- /3 rows: -->
+		{% csrf_token %}
+	</form>				
+							
+							
+							
+							
+							
+							
+							
+							
+											
+						</div>														
+				</div>
+{% endblock content %}	
+
+

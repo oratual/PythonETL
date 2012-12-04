@@ -1,0 +1,82 @@
+{% extends "main_template.html" %}
+
+
+
+{% block header %}
+						<div class="main_title"> <h2>Validate {{ object_Name }} <span style="font-weight:lighter;">#{{ the_pending.id }}</span></h2> </div>
+	
+						<div class="button_box">
+							<p><button class="btn" onclick="javascript:window.location.href='/pendings/show/all/'" type="button">Cancel</button></p>
+							<p><button class="btn btn-primary" onclick="validate_pending_submit()" type="button">Validate</button></p>
+						</div>	
+						
+						<script>
+							function validate_pending_submit(){							
+								var a = document.getElementById("validate_pending");
+								a.submit();
+							}	
+						</script>
+			
+					
+{% endblock %}	
+
+
+{% block body_attributes %}
+		class="validate_pending" 	
+{% endblock body_attributes %}
+
+				
+{% block breadcrum %}
+					    <li><a href="/index">Home</a> 									  <span class="divider">/</span></li>
+						<li><a href="/pendings/show/all">{{ object_Name }}s</a> <span class="divider">/</span></li>
+					    <li><a href="/pendings/show/{{ the_pending.id }}/">{{ object_Name }} {{ the_pending.source|truncatechars:15 }}</a> <span class="divider">/</span></li>
+					    <li class="active">Edit {{ object_Name }} {{ the_pending.name }}</li>	    
+{% endblock breadcrum %}				
+				
+				
+				
+				
+{% block content %}				
+				<div class="body_container">				
+	
+
+						<form id="validate_pending" method="post" action="">							
+							
+			<!-- Form -->
+
+		<!-- upload button -->
+		<div class="row">
+			<div class="span2">
+
+
+					{{ form.non_field_errors }}
+
+				<p class="label_first_element_left">
+					{{ form.source.label_tag }}
+			</div>
+			<div class="span5">
+				{{ form.source.help_text }}</p>
+			
+					{{ form.source.errors }}
+					{{ form.source }}
+			
+			</div>
+		</div>
+<br />
+	
+		{% csrf_token %}
+	</form>				
+							
+							
+							
+							
+							
+							
+							
+							
+											
+						</div>														
+				</div>
+{% endblock content %}	
+
+

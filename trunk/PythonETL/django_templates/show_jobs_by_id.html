@@ -1,0 +1,256 @@
+{% extends "main_template.html" %}
+
+{% block header %}
+<div class="main_title">
+	<h2>{{ object_Name }} ID: <span class="font_lighter">{{ the_job.id }}</span></h2>
+</div>
+
+<div class="button_box">
+	<div class="btn-group ">
+		<a class="btn btn-primary " href="#"></i> Action</a>
+		<a class="btn btn-primary dropdown-toggle " data-toggle="dropdown"><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="/jobs/edit/{{ the_job.id }}/"><i class="icon-pencil"></i> Edit</a>
+			</li>
+
+			<li>
+				<a data-toggle="modal" data-target="#myModal" href="#" ><i class="icon-trash"></i> Delete</a>
+			</li>
+		</ul>
+
+		<!-- Modal delete object button-->
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					×
+				</button>
+				<h3 id="myModalLabel">Confirm</h3>
+			</div>
+			<div class="modal-body">
+				<p>
+					You are about to delete {{ object_Name }} {{ the_job.source|truncatechars:33 }}
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">
+					Cancel Action!
+				</button>
+				<button class="btn btn-danger" onclick="javascript:window.location.href='/jobs/delete/{{ the_job.id}}/'">
+					Delete {{ object_Name }}
+				</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}
+
+{% block body_attributes %}
+onload="prettyPrint()"
+{% endblock body_attributes %}
+
+{% block breadcrum %}
+<li>
+	<a href="/index">Home</a><span class="divider">/</span>
+</li>
+<li>
+	<a href="/jobs/show/all">{{ object_Name }}s</a><span class="divider">/</span>
+</li>
+<li class="active">
+	{{ the_job.source|truncatechars:45  }}
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="body_container">
+
+	<div style='margin-bottom:15px'>
+
+<div>
+		<!-- Template -->
+		<div class="row">
+			<div class="span2">
+				<span class="first_element_left">Template:</span>
+			</div>
+			<div class="span5">
+				
+				
+				
+				
+				
+				<a href="{{ the_job.source }}">{{ the_job.source|truncatechars:45 }}</a>
+				
+				
+			</div>
+		</div>
+<br />
+		<!-- Status -->
+		<div class="row">
+			<div class="span2">
+				<span class="first_element_left">Status:</span>
+			</div>
+			<div class="span2 style:border ">
+				{{ the_job.status }}
+			</div>
+		</div>
+<br />
+		<!-- periodicity -->
+		<div class="row">
+			<div class="element_left span2">
+				Periodicity:
+			</div>
+			<div class="element_left span2">
+				{{ the_job.periodicity }}
+			</div>
+		</div>
+		<br />
+
+	</div>
+
+	<!-- 3 rows: -->
+	<div class="row">
+		
+		<!-- Day of the week. Change with http://stackoverflow.com/questions/5966629/django-days-of-week-representation-in-model -->
+		<div class="span2">
+			<p>
+				DoM / DoW / Hour: 
+
+
+			</p>
+		</div>
+
+		<!-- Day of the month -->
+		<div class="span2">
+			<p>
+				{{ the_job.dow }} / 
+				{{ the_job.dom }} / 
+				{{ the_job.hour }}
+			</p>
+		</div>
+
+	</div>
+	<!-- /3 rows: -->
+
+
+
+
+
+
+
+
+
+{% comment %}<!--well prototype-->
+
+		
+		<!-- Template -->
+		<div class="row">
+			<div class="span2 pull-left" >
+				<span class="first_element_left label_well">Template:</span>
+			</div>
+			<div class="span5 well well-small">
+				{{ the_job.source|truncatechars:45 }}
+			</div>
+		</div>
+
+		<!-- Status -->
+		<div class="row">
+			<div class="span2">
+				<span class="first_element_left label_well">Status:</span>
+			</div>
+			<div class="span3 well well-small ">
+				{{ the_job.status }}
+			</div>
+		</div>
+
+		<!-- periodicity -->
+		<div class="row">
+			<div class="element_left span2 label_well">
+				Periodicity:
+			</div>
+			<div class="element_left span2 well well-small">
+				{{ the_job.periodicity }}
+			</div>
+		</div>
+		<br />
+
+	</div>
+
+	<!-- 3 rows: -->
+	<div class="row">
+		<!-- Day of the week. Change with http://stackoverflow.com/questions/5966629/django-days-of-week-representation-in-model -->
+		
+		<div class="span2">
+			
+			
+			
+		</div>
+		
+		<div class="span2 ">
+			<div class="pull-left label_well">
+				DoW
+			</div>
+
+			<div class="pull-left  well well-small" style="margin-left: 20px">
+				{{ the_job.dow }}
+			</div>
+
+		</div>
+
+		<!-- Day of the month -->
+				
+		<div class="" style="margin-left: 30px">
+			<div class="pull-left label_well">
+				DoM
+			</div>
+
+			<div class="pull-left  well well-small" style="margin-left: 20px">
+				{{ the_job.dom }}
+			</div>
+		</div>
+		<!-- Hour -->
+		<div class="pull-left" style="margin-left: 65px">
+			<div class="pull-left label_well">
+				Hour
+			</div>
+
+			<div class="pull-left  well well-small" style="margin-left: 20px">
+				{{ the_job.hour }}
+			</div>
+		</div>
+		
+		
+	</div>
+	<!-- /3 rows: -->
+<!--/well prototype -->	
+{% endcomment %}
+	
+
+
+
+
+<!-- Modal delete object button-->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+
+		</button>
+		<h3 id="myModalLabel">Confirm</h3>
+	</div>
+	<div class="modal-body ">
+		<p>
+			You are about to delete the {{ object_Name }} {{ the_job.source }}?
+		</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">
+			Cancel Action!
+		</button>
+		<button class="btn btn-danger">
+			Delete {{ object_Name }}
+		</button>
+	</div>
+</div>
+{% endblock %}
+

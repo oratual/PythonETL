@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+      <html lang="es">
+      <head>
+              <meta charset="utf-8">
+              <title>Edit Template</title>
+      </head>
+      <body>
+			<form method="post" action="">			    
+			     {#send new content#}
+				<textarea name="content" cols="20" rows="2" id="id_of_content">content of template</textarea>
+			    <input type="submit" value="save" />{% csrf_token %}
+			</form>
+			<script>
+    		document.write('<a href="' + document.referrer + '">Go Back to Index</a>');
+			</script>
+	  <body>
+</html>	

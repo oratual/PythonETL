@@ -1,0 +1,52 @@
+<html>
+    <head>
+	    <title>List all DB actions </title>
+	    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+    	{% load bootstrap_toolkit %}
+		
+    	
+    	{% if deleted_id %}
+    	<br>The ID {{deleted_id}} was deleted<br>
+    	{% endif %}
+    	
+    	{% if edited_id %}
+    	<br>The ID {{edited_id}} was edited<br>
+    	{% endif %}
+    	
+    	{% if created_template %}
+    	<br>The {{created_template}} was created<br>
+    	{% endif %}
+    	
+    	{% if error %}
+    	<br>An error ocurred: {{error}} <br>
+    	{% endif %}
+    	
+    	{% if errors %}
+    	<br>An error ocurred: {{errors}} <br>
+    	{% endif %}
+    	
+    	<br>
+		Manage Templates <br>
+			<a href="/templates/show/all/">Show all Templates (Edit and Delete by ID)</a> <br>
+			<a href="/templates/create">Create Templates </a> <br>
+			<a href="/templates/edit/all">Edit Templates </a> <br>
+			<a href="/templates/delete/all">Delete Templates </a> <br>
+			<br>
+		Manage Jobs<br>
+			<a href="/jobs/show/all/">Show all Jobs(Edit and Delete by ID)</a> <br>
+			<a href="/jobs/create">Create Jobs</a> <br>
+			<a href="/jobs/edit/all">Edit Jobs</a> <br>
+			<a href="/jobs/delete/all">Delete Jobs</a> <br>
+			<br>
+		Manage Outputs<br>
+			<a href="/outputs/show/all/">Show all Outputs(Edit and Delete by ID)</a> <br>
+			<a href="/outputs/create">Create Outputs</a> <br>
+			<a href="/outputs/edit/all">Edit Outputs</a> <br>
+			<a href="/outputs/delete/all">Delete Outputs</a> <br>
+			<br>
+			
+			<script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

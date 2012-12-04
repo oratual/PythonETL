@@ -1,0 +1,51 @@
+{% extends "main_template.html" %}
+
+
+{% block header %}
+						<div class="main_title"> <h2>{{ object_Name }}s</h2> </div>
+						<div class="button_box">
+							<p><button class="btn btn-primary" type="button" onclick="javascript:window.location.href='/templates/create'">New {{ object_Name }}</button></p>
+						</div>
+{% endblock %}	
+
+
+{% block breadcrum %}
+					    <li><a href="/index">Home</a> <span class="divider">/</span></li>
+					    <li class="active">{{ object_Name }}s</li>
+{% endblock breadcrum %}
+
+
+{% block content %}
+				<div class="body_container">
+				
+					<div>
+				    	<table class="table table-striped table-bordered table-hover">
+					  		<thead>
+					  			<tr><th>ID</th><th>Name</th><th>Created</th><th>Updated</th>
+					  		</thead>
+					  		<tbody>
+						 		{% for o in template_list %}   		
+						    		<tr class="{% cycle 'id' 'name' 'created' 'updated' %}">
+									<tr class="cursor_pointer" onclick="javascript:window.location.href='/templates/show/{{ o.id }}/'">
+						        		<td>{{ o.id }}</td><td>{{ o.name }}</td><td>{{ o.created }}</td><td>{{ o.updated }}</td>
+						    		</tr>
+								{% endfor %}
+							</tbody>	
+				 		</table> 		
+												
+					</div> <!-- /grey_border -->
+						
+						<div class="pagination">
+						    <ul>
+						    <li class="disabled"><span>Prev</span></li>
+						    <li class="disabled"><span>1</span></li>
+							<li class="active"><a href="#">2</a></li>
+							<li class="active"><a href="#">3</a></li>
+							<li class="active"><a href="#">4</a></li>
+							<li class="active"><a href="#">Next</a></li>											
+						    </ul>						
+						</div> <!-- /pagination -->
+
+				</div>
+{% endblock %}				
+				

@@ -1,0 +1,66 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+				<div class="body_container">
+
+					<div class="grey_border">
+				    	<table class="table table-striped">
+							  		<tr>
+							  		<th>ID</th><th>Delete?</th><th>Edit?</th><th>Created</th><th>Updated</th><th>Content</th>
+						 		{% for o in template_list %}   		
+						    		{#<tr class="{% cycle 'id' 'job' 'file' 'to_review' 'created' 'updated'%}">#}
+									<tr>
+						        		<td>{{ o.id }}</td><td>   <a href="/templates/delete/{{ o.id }}">Delete</a>  </td><td>
+						        								  <a href="/templates/edit/{{ o.id }}">Edit</a>
+						        			   					  </td><td>{{ o.created }}</td><td>{{ o.updated }}</td><td>{{ o.content }}</td> 
+						    		</tr>
+								{% endfor %}
+				 		</table> 		
+				 		
+					 	
+						</div> <!-- /grey_border -->
+						
+						<div class="pagination">
+						    <ul>
+						    <li class="disabled"><span>Prev</span></li>
+						    <li class="disabled"><span>1</span></li>
+							<li class="active"><a href="#">2</a></li>
+							<li class="active"><a href="#">3</a></li>
+							<li class="active"><a href="#">4</a></li>
+							<li class="active"><a href="#">Next</a></li>											
+						    </ul>						
+						</div> <!-- /pagination -->
+
+				</div>
+{% endblock %}		
+
+
+
+
+
+<html>
+    <head>
+
+	    <title>List all Outputs </title>
+
+    </head>
+    <body>
+    	dddd
+	Deploying {{ output_list|length }} outputs:<br><br>
+
+		{% for o in output_list %}
+				{#<tr class="{% cycle 'id' 'job' 'file' 'to_review' 'created' 'updated' %}>">#}		        
+		        	<li>ID:{{ o.id }}, <a href="/outputs/delete/{{ o.id }}">Delete</a>, 
+		        	<a href="/outputs/edit/{{ o.id }}">Edit</a>		        
+		        	,JOB:{{ o.job }},FILE:{{ o.file }},TO REVIEW:{{ o.to_review }},CREATED:{{ o.created }},UPDATED:{{ o.updated }}, </li>
+		   		{# </tr>#}
+		{% endfor %}
+		<br><br>
+			
+			<script>
+    		document.write('<a href="' + document.referrer + '">Go Back to Index</a>');
+			</script>
+  
+    </body>
+    
+</html>

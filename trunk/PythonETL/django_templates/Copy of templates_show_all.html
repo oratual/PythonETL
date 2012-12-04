@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Phyton ETL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/custom.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="{{STATIC_URL}}ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{STATIC_URL}}ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{STATIC_URL}}ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{STATIC_URL}}ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{STATIC_URL}}ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body style="background-color: #E6E6E6">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Phyton ETL</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Pending</a></li>
+              <li><a href="#about">Jobs</a></li>
+              <li><a href="#contact">Templates</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container" >
+
+		<div class="header row">
+			<div class="offset2 span8 wrap" >	<!--level 1 main square -->					
+					<div class="header"> <!--level 2  -->	
+							<div class="main_title"> <h2>{{ object_Name }}s</h2> </div>
+							<div class="button_box">
+								<p><button class="btn btn-primary" type="button  ">New {{ object_Name }}</button></p>
+							</div>
+					</div>
+					
+					<div class="bread_box"><!--level 2  -->
+						<ul class="breadcrumb">
+					    <li><a href="#">Home</a> <span class="divider">/</span></li>
+					    <li class="active">{{ object_Name }}s</li>
+					    </ul>
+					</div>
+
+				<div class="body_container">
+				    
+					<div class="grey_border">
+				    	<table class="table table-striped">
+							  		<tr>
+							  		<th>ID</th><th>Delete?</th><th>Edit?</th><th>Created</th><th>Updated</th><th>Content</th>
+						 		{% for o in template_list %}   		
+						    		{#<tr class="{% cycle 'id' 'created' 'updated' 'content'%}">#}
+									<tr>
+						        		<td>{{ o.id }}</td><td>   <a href="/templates/delete/{{ o.id }}">Delete</a>  </td><td>
+						        								  <a href="/templates/edit/{{ o.id }}">Edit</a>
+						        			   					  </td><td>{{ o.created }}</td><td>{{ o.updated }}</td><td>{{ o.content }}</td> 
+						    		</tr>
+								{% endfor %}
+				 		</table> 		
+				 		
+					 	
+						</div> <!-- /grey_border -->
+						
+						<div class="pagination">
+						    <ul>
+						    <li class="disabled"><span>Prev</span></li>
+						    <li class="disabled"><span>1</span></li>
+							<li class="active"><a href="#">2</a></li>
+							<li class="active"><a href="#">3</a></li>
+							<li class="active"><a href="#">4</a></li>
+							<li class="active"><a href="#">Next</a></li>											
+						    </ul>						
+						</div> <!-- /pagination -->
+
+				</div>
+				
+				
+			</div> <!-- /wrap -->
+		</div>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{STATIC_URL}}js/jquery.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-transition.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-alert.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-modal.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-dropdown.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-scrollspy.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-tab.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-tooltip.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-popover.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-button.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-collapse.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-carousel.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

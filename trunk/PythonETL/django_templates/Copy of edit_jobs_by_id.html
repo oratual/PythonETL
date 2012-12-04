@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+      <html lang="es">
+      <head>
+              <meta charset="utf-8">
+              <title>Edit Jobs</title>
+      </head>
+      <body>
+		
+			Deploying {{ form|length }} jobs:<br><br>
+	
+			<form method="post" action=""> 			
+    			{{ form.as_p }}    								
+    		<input type="submit" value="save" />{% csrf_token %}
+			</form>
+			
+			<script>
+    		document.write('<a href="' + document.referrer + '">Go Back to Index</a>');
+			</script>
+			
+	  
+	  
+	  <body>
+</html>	

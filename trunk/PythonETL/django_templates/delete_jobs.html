@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+      <html lang="es">
+      <head>
+              <meta charset="utf-8">
+              <title>Delete Jobs</title>
+      </head>
+      <body>
+			<form method="post" action="">
+			    {{ formset }}
+			    <input type="submit" value="save" />{% csrf_token %}
+			</form>
+			<script>
+    		document.write('<a href="' + document.referrer + '">Go Back to Index</a>');
+			</script>
+	  <body>
+</html>	

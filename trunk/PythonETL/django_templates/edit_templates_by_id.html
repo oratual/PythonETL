@@ -1,0 +1,53 @@
+{% extends "main_template.html" %}
+
+
+
+{% block header %}
+						<div class="main_title"> <h2>Edit {{ object_Name }}   <span style="font-weight:lighter;">{{ the_template.name }}</span></h2> </div>
+	
+						<div class="button_box">
+							<p><button class="btn" onclick="javascript:window.location.href='/templates/show/{{ edited_id }}/'" type="button">Cancel</button></p>
+							<p><button class="btn btn-primary" onclick="edit_template_submit()" type="button">Save {{ object_Name }}</button></p>
+						</div>	
+						
+						<script>
+							function edit_template_submit(){							
+								var a = document.getElementById("edit_template");
+								a.submit();
+							}	
+						</script>
+						
+
+
+			
+					
+{% endblock %}	
+
+
+{% block body_attributes %}
+		class="edit_template" 	
+{% endblock body_attributes %}
+
+				
+{% block breadcrum %}
+					    <li><a href="/index">Home</a> 									  <span class="divider">/</span></li>
+						<li><a href="/templates/show/all">{{ object_Name }}s</a> <span class="divider">/</span></li>
+					    <li><a href="/templates/show/{{ the_template.id }}/">{{ object_Name }} {{ the_template.name }}</a> <span class="divider">/</span></li>
+					    <li class="active">Edit {{ object_Name }} {{ the_template.name }}</li>	    
+{% endblock breadcrum %}				
+				
+				
+				
+				
+{% block content %}				
+				<div class="body_container">				
+	
+					<form id="edit_template" method="post" action="">		
+    					{{ form.as_p }}  
+    						{% csrf_token %}					
+					</form>
+
+											
+						</div>														
+				</div>
+{% endblock content %}	

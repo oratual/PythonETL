@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+	    <title>Menu all Templates </title>
+
+    </head>
+    <body>
+
+{#List format#}
+		Deploying {{ template_list|length }} templates:<br><br>
+
+		{% for o in template_list %}
+		    {#<tr class="{% cycle 'id' 'created' 'updated' 'content'%}>">#}
+		        <li>ID:{{ o.id }},<a href="/templates/delete/{{ o.id }}">Delete,</a>
+		        	<a href="/templates/edit/{{ o.id }}">Edit,</a>
+		        	CREATED:{{ o.created }},UPDATED:{{ o.updated }},CONTENT: {{ o.content }} </li>
+		   {# </tr>#}
+		{% endfor %}
+		<br><br>
+
+{#Table format#}
+			  <table border="1">
+			  		<tr>
+			  		<th>ID</th><th>Delete?</th><th>Edit?</th><th>Created</th><th>Updated</th><th>Content</th>
+		 {% for o in template_list %}   		
+		    		{#<tr class="{% cycle 'id' 'created' 'updated' 'content'%}">#}
+					<tr>
+		        		<td>{{ o.id }}</td><td>   <a href="/templates/delete/{{ o.id }}">Delete</a>  </td><td>
+		        								  <a href="/templates/edit/{{ o.id }}">Edit</a>
+		        			   					  </td><td>{{ o.created }}</td><td>{{ o.updated }}</td><td>{{ o.content }}</td> 
+		    		</tr>
+		{% endfor %}
+ 				</table> 			
+ 			<br>
+ 			
+			<script>
+    		document.write('<a href="' + document.referrer + '">Go Back to Index</a>');
+			</script>
+			
+    </body>
+</html>
