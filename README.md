@@ -10,9 +10,10 @@ Python ETL is an Extract-Transform-Load data in Django(Python)+Bootstrap 2
 http://en.wikipedia.org/wiki/Extract,_transform,_load
 
 
-Design and leaded
+Design and leaded:
 Antonio José Moreno de la Rosa
-Coding
+
+Coding:
 Lautaro Dominguez
 
 Open source with GNU General Public License   
